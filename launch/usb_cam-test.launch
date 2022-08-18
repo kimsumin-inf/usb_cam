@@ -1,11 +1,19 @@
 <launch>
   <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
     <param name="video_device" value="/dev/video0" />
-    <param name="image_width" value="640" />
-    <param name="image_height" value="480" />
-    <param name="pixel_format" value="yuyv" />
+    <param name="image_width" value="1280" />
+    <param name="image_height" value="720" />
+    <param name="pixel_format" value="mjpeg" />
     <param name="camera_frame_id" value="usb_cam" />
     <param name="io_method" value="mmap"/>
+    <param name="autofocus" value="false"/>
+    <param name="autoexposure" value="false"/>
+    <param name="exposure" value="100"/>
+    <param name="auto_white_balance" value="false"/>
+    <param name="white_balance" value="4000"/>
+    <param name="gain" value="-1"/>
+    <param name="brightness" value="125"/>
+    
   </node>
   <node name="image_view" pkg="image_view" type="image_view" respawn="false" output="screen">
     <remap from="image" to="/usb_cam/image_raw"/>
